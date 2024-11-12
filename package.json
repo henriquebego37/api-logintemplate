@@ -1,0 +1,45 @@
+{
+  "name": "henriquebego-backend-typescriptnode",
+  "version": "1.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/henriquebego37/api-logintemplate.git",
+  "author": "henriquebego37 <henriquedev37@gmail.com>",
+  "license": "MIT",
+  "files": [
+    "src/",
+    "config/",
+    "dist/",
+    "server.ts",
+    ".eslintrc.json",
+    ".gitignore",
+    ".prettierrc",
+    ".env",
+    "prisma/"
+  ],
+  "scripts": {
+    "prisma:pull": "npx prisma db pull --force",
+    "prisma:gen": "npx prisma generate",
+    "build": "npx tsc",
+    "pm2:save": "npx pm2 save --force",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "step:install-ignore": "yarn install --ignore-engines",
+    "update:prisma": "yarn add --dev prisma@latest && yarn add @prisma/client@latest",
+    "dev": "yarn install && yarn prisma:pull && yarn prisma:gen && npx nodemon server.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "@types/cors": "^2.8.17",
+    "@types/node": "^22.9.0",
+    "@typescript-eslint/eslint-plugin": "^8.14.0",
+    "@typescript-eslint/parser": "^8.14.0",
+    "eslint": "^9.14.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7",
+    "prettier": "^3.3.3",
+    "prisma": "^5.22.0",
+    "typescript": "^5.6.3"
+  }
+}
