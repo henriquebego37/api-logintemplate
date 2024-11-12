@@ -1,14 +1,18 @@
 import cors from "cors";
 import express from "express";
+import rtUsers from "./src/routes/users";
 // ------------------------------------------------------------------------------>
-const app = express();
+export const router = express();
 // ------------------------------------------------------------------------------>
 const port = process.env.PORT || 3333;
 const name = process.env.PROJECT_NAME || "api-template";
 const isProd = process.env.NODE_ENV === "production";
 // ------------------------------------------------------------------------------>
-app.use(cors());
+router.use(cors());
 // ------------------------------------------------------------------------------>
-app.listen(port, () => {
+router.use("", ...[rtUsers()]);
+// ------------------------------------------------------------------------------>
+
+router.listen(port, () => {
   console.log(`🚀 Server ${name} ready at: http://localhost:${port}`);
 });

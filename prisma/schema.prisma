@@ -7,8 +7,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model user {
-  id    Int     @id @default(autoincrement())
-  email String  @unique(map: "email") @db.VarChar(255)
-  name  String? @db.VarChar(255)
+model api_classes {
+  id      Int     @id @default(autoincrement())
+  name    String? @db.VarChar(100)
+  segment String? @db.VarChar(100)
+  habitat String? @db.VarChar(100)
+}
+
+model api_school {
+  id      Int     @id @default(autoincrement())
+  name    String? @db.VarChar(150)
+  segment String? @db.VarChar(150)
+}
+
+model api_user {
+  id       Int     @id @default(autoincrement())
+  name     String? @db.VarChar(150)
+  email    String? @db.VarChar(150)
+  token    String? @db.VarChar(200)
+  phone    String? @db.VarChar(20)
+  cpf      String? @db.VarChar(20)
+  login    String? @db.VarChar(100)
+  password String? @db.VarChar(200)
 }

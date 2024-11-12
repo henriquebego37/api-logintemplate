@@ -18,6 +18,7 @@
   ],
   "scripts": {
     "prisma:pull": "npx prisma db pull --force",
+    "prisma:push": "npx prisma db push",
     "prisma:gen": "npx prisma generate",
     "build": "npx tsc",
     "pm2:save": "npx pm2 save --force",
@@ -25,7 +26,8 @@
     "format": "prettier --write .",
     "step:install-ignore": "yarn install --ignore-engines",
     "update:prisma": "yarn add --dev prisma@latest && yarn add @prisma/client@latest",
-    "dev": "yarn install && yarn prisma:pull && yarn prisma:gen && npx nodemon --exec ts-node server.ts"
+    "dev": "yarn install && yarn prisma:pull && yarn prisma:gen && npx nodemon --exec ts-node server.ts",
+    "dev1": "yarn install && yarn prisma:push && yarn prisma:gen && npx nodemon --exec ts-node server.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
