@@ -1,26 +1,26 @@
-// Em src/controllers/users/postUsersController.ts
 import { Request, Response } from "express";
-import { createUser } from "../../services/userService"; // Importando a função createUser
-import { UserData } from "../../services/userService"; // Importando o tipo UserData
+import { createUser } from "../../services/userServices";
 
-const postUsersController = async (req: Request, res: Response) => {
-  const { name, email, cpf, login, password, phone }: UserData = req.body;
-
+export const postUsersController = async (req: Request, res: Response) => {
   try {
+    // Pegando os dados do usuário do corpo da requisição
+    const { name, cpf, email, phone, login, password, token } = req.body;
+
+    // Chamando a função do service para criar o usuário
     const newUser = await createUser({
       name,
-      email,
       cpf,
+      email,
+      phone,
       login,
       password,
-      phone,
+      token,
     });
 
-    return res.status(201).json(newUser);
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ error: "Failed to create user" });
+    return res
+      .status(201)
+      .json({ message: "User created successfully", user: newUser });
+  } catch (error) {
+    throw new Error("Error creating user: " + error);
   }
 };
-
-export default postUsersController;
