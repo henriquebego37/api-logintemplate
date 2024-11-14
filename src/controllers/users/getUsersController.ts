@@ -8,7 +8,7 @@ const getUsersController = async (req: Request, res: Response) => {
   try {
     const users = await getUsers();
 
-    return res.status(200).json({ Usuários: users });
+    return res.status(200).json({ users: users });
   } catch (err) {
     return res
       .status(500)
