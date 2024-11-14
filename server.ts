@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
 import rtUsers from "./src/routes/users";
+import authMiddleware from "./src/middlewares/authVerify";
 // ------------------------------------------------------------------------------>
 export const router = express();
 // ------------------------------------------------------------------------------>
@@ -14,8 +15,9 @@ router.use(cors());
 // Middleware para ler JSON do corpo da requisição
 router.use(express.json());
 // ------------------------------------------------------------------------------>
-// Definindo as rotas do usuário
-router.use("", rtUsers); // Acesse as rotas de usuário com "/users"
+router.use(authMiddleware);
+// ------------------------------------------------------------------------------>
+router.use("", rtUsers); // Acesse as rotas de usuário com ""
 // ------------------------------------------------------------------------------>
 router.listen(port, () => {
   console.log(`🚀 Server ${name} ready at: http://localhost:${port}`);
